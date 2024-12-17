@@ -6,37 +6,64 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
     <title>Whatsapp Inserat Generator - ABCS</title>
     <style>
+       /* Ab einer Breite von max. 380px */
+@media (max-width: 380px) {
+    .container {
+        transform: scale(1.3);
+    }
+}
 
-        @media (min-width: 1400px){
-            .container {
-            zoom:0.36;
-        }
+/* Ab einer Breite von 381px bis max. 415px */
+@media (min-width: 381px) and (max-width: 415px) {
+    .container {
+        transform: scale(1.6);
+    }
+}
 
-        }
+/* Ab einer Breite von 416px bis max. 431px */
+@media (min-width: 416px) and (max-width: 431px) {
+    .container {
+        transform: scale(1.7);
+    }
+}
 
-        @media (min-width: 1500px){
-            .container {
-            zoom:0.5;
-        }
+/* Ab einer Breite von 432px bis max. 1000px */
+@media (min-width: 432px) and (max-width: 1000px) {
+    .container {
+        transform: scale(1.6);
+    }
+}
 
-        }
 
-        @media (max-width: 1400px){
-            .container {
-            zoom:0.36;
-        }
+/* Ab einer Breite von 1001px bis max. 1400px */
+@media (min-width: 1001px) and (max-width: 1400px) {
+    .container {
+        transform: scale(1.6);
+    }
+}
 
-        .safari-ios .text-container{
-            transform: scale(0.36);
-            transform-origin: top left;
-            padding: 95.2px !important;
-            height: 952px !important;
-            gap: 27.3px !important;
-        }
+/* Ab einer Breite von 1401px bis max. 1600px */
+@media (min-width: 1401px) and (max-width: 1600px) {
+    .container {
+        transform: scale(1.7);
+    }
+}
 
-        }
+/* Ab einer Breite von 1601px bis max. 2000px */
+@media (min-width: 1601px) and (max-width: 2000px) {
+    .container {
+        transform: scale(1.9);
+    }
+}
 
-        @font-face {
+/* Ab einer Breite von 2001px */
+@media (min-width: 2001px) {
+    .container {
+        transform: scale(2.3);
+    }
+}
+
+    @font-face {
             font-family: 'GT America Regular';
             src: url('GT-America-LCG-Standard-Regular.otf') format('opentype');
         }
@@ -61,23 +88,23 @@
         .container {
             background: #1C1C1E;
         }
-        
+
         .preview-container {
             position: relative;
-            width: 900px;
-            height: 1600px;
+            width: 225px; /* 900px / 4 */
+            height: 400px; /* 1600px / 4 */
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: flex-start;
             overflow: hidden;
-            background-color: #008865; /* Hintergrundfarbe für das Inserat */
-            border-radius: 50px;
+            background-color: #008865;
+            border-radius: 12.5px; /* 50px / 4 */
         }
 
         .image-container {
-            width: 900px;
-            height: 900px;
+            width: 225px; /* 900px / 4 */
+            height: 225px; /* 900px / 4 */
             overflow: hidden;
             display: flex;
             justify-content: center;
@@ -86,18 +113,18 @@
             top: 0;
             left: 0;
             z-index: 1;
-            cursor:pointer; /* Macht das Bild klickbar */
+            cursor:pointer;
         }
 
         .image-container img {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Bild wird auf 900x900 beschnitten */
+            object-fit: cover;
         }
 
         .background-image {
-            width: 900px;
-            height: 700px;
+            width: 225px; /* 900px / 4 */
+            height: 175px; /* 700px / 4 */
             position: absolute;
             bottom: 0;
             z-index: 0;
@@ -110,39 +137,39 @@
             align-items: start;
             z-index: 2;
             position: absolute;
-            top: 900px;
+            top: 225px; /* 900px / 4 */
             left: 0;
             right: 0;
-            padding: 70px;
-            max-height: 700px;
+            padding: 17.5px; /* 70px / 4 */
+            max-height: 175px; /* 700px / 4 */
             overflow: hidden;
             box-sizing: border-box;
-            gap: 20px;
+            gap: 5px; /* 20px / 4 */
         }
 
         .title {
-            font-size: 70pt;
-            line-height: 75pt;
+            font-size: 17.5pt; /* 70pt / 4 */
+            line-height: 18.75pt; /* 75pt / 4 */
             color: white;
             text-align: start;
             font-family: 'GT America Medium', Arial, sans-serif;
             word-wrap: break-word;
-            cursor: pointer; /* Titel klickbar machen */
+            cursor: pointer;
         }
 
         .text {
-            font-size: 35pt;
-            line-height: 40pt;
+            font-size: 8.75pt; /* 35pt / 4 */
+            line-height: 10pt; /* 40pt / 4 */
             color: white;
             text-align: start;
             font-family: 'GT America Medium', Arial, sans-serif;
             word-wrap: break-word;
             overflow: hidden;
-            cursor: pointer; /* Text klickbar machen */
+            cursor: pointer;
         }
 
         .title, .text {
-            outline: none; /* Entfernt die Standardumrandung */
+            outline: none;
             cursor: text;
         }
 
@@ -153,21 +180,20 @@
 
         button {
             display: inline-block;
-            padding: 60px 40px;
-            background-color: #27272a; /* Blau */
-            color: white; /* Weißer Text */
-            font-size: 40px;
-            border-radius: 100px;
+            padding: 15px 10px; /* 60px 40px / 4 */
+            background-color: #27272a;
+            color: white;
+            font-size: 10pt; /* 40px / 4 */
+            border-radius: 25px; /* 100px / 4 */
             cursor: pointer;
             text-align: center;
-            border: 50px solid #1C1C1E;
-            width: 900px;
+            border: 12.5px solid #1C1C1E; /* 50px / 4 */
+            width: 225px; /* 900px / 4 */
         }
 
         button:hover {
-            background-color: #515152; /* Dunkleres Blau beim Hover */
+            background-color: #515152;
         }
-
     </style>
 </head>
 <body>
@@ -190,11 +216,6 @@
     </div>
 
     <script>
-
-        if (navigator.userAgent.match(/iPhone|iPad|iPod/) && navigator.userAgent.match(/Safari/)) {
-            document.documentElement.classList.add('safari-ios');
-        }
-
         const previewImage = document.getElementById('preview-image');
         const previewTitle = document.getElementById('preview-title');
         const previewText = document.getElementById('preview-text');
@@ -213,10 +234,10 @@
             img.onload = function() {
                 const canvas = document.createElement('canvas');
                 const ctx = canvas.getContext('2d');
-                canvas.width = 900;
-                canvas.height = 700;
+                canvas.width = 225;  // 900px / 4
+                canvas.height = 175;  // 700px / 4
 
-                ctx.drawImage(img, 0, 0, 900, 700);
+                ctx.drawImage(img, 0, 0, 225, 175); // 900px / 4 und 700px / 4
 
                 svgToPngDataUrl = canvas.toDataURL('image/png');
                 backgroundImage.src = svgToPngDataUrl;
@@ -263,76 +284,64 @@
 
         // Inserat als Bild herunterladen
         downloadBtn.addEventListener('click', () => {
-            const previewContainer = document.getElementById('preview');
-            const container = document.querySelector('.container');
-            const imageContainer = document.getElementById('image-container');
-            const imageElement = document.getElementById('preview-image');
-            
-            // Temporäres Entfernen von Zoom und Border-Radius
-            const originalZoom = container.style.zoom;
-            container.style.zoom = '1'; // Zoom deaktivieren
-            const originalBorderRadius = previewContainer.style.borderRadius;
-            previewContainer.style.borderRadius = '0';
+    const previewContainer = document.getElementById('preview');
+    const container = document.querySelector('.container');
 
-            // Safari-spezifische Styles vorübergehend entfernen
-            const safariTextContainer = document.querySelector('.safari-ios .text-container');
-            const originalTransform = safariTextContainer ? safariTextContainer.style.transform : '';
-            const originalPadding = safariTextContainer ? safariTextContainer.style.padding : '';
-            const originalHeight = safariTextContainer ? safariTextContainer.style.height : '';
+    // Temporäres Entfernen der @media Queries
+    const styleTag = document.querySelector('style');
+    const originalMediaQueries = styleTag.innerHTML; // Speichern der Originalen @media Queries
+    const modifiedStyle = originalMediaQueries.replace(/@media[\s\S]*?}\s*/g, ''); // Entfernen der @media Queries
+    styleTag.innerHTML = modifiedStyle;
 
-            if (safariTextContainer) {
-                safariTextContainer.style.transform = '';
-                safariTextContainer.style.padding = '';
-                safariTextContainer.style.height = '';
-            }
+    // Temporäres Entfernen von Zoom und Border-Radius
+    const originalZoom = container.style.zoom;
+    container.style.zoom = '1'; // Zoom deaktivieren
+    const originalBorderRadius = previewContainer.style.borderRadius;
+    previewContainer.style.borderRadius = '0';
 
-            // Manuelle Berechnung für object-fit: cover
-            const containerWidth = 900;
-            const containerHeight = 900;
-            const imageWidth = imageElement.naturalWidth;
-            const imageHeight = imageElement.naturalHeight;
+    // Manuelle Berechnung für object-fit: cover
+    const containerWidth = 225;  // 900px / 4
+    const containerHeight = 225;  // 900px / 4
+    const imageWidth = previewImage.naturalWidth;
+    const imageHeight = previewImage.naturalHeight;
 
-            let scaleX = containerWidth / imageWidth;
-            let scaleY = containerHeight / imageHeight;
+    let scaleX = containerWidth / imageWidth;
+    let scaleY = containerHeight / imageHeight;
 
-            // Wähle den größeren Skalierungsfaktor (damit das Bild den Container vollständig abdeckt)
-            const scale = Math.max(scaleX, scaleY);
+    // Wähle den größeren Skalierungsfaktor (damit das Bild den Container vollständig abdeckt)
+    const scale = Math.max(scaleX, scaleY);
 
-            // Berechne neue Bildgrößen
-            const newWidth = imageWidth * scale;
-            const newHeight = imageHeight * scale;
+    // Berechne neue Bildgrößen
+    const newWidth = imageWidth * scale;
+    const newHeight = imageHeight * scale;
 
-            // Setze die Bildgröße
-            imageElement.style.width = `${newWidth}px`;
-            imageElement.style.height = `${newHeight}px`;
-            imageElement.style.objectPosition = 'center'; // Bild zentrieren
+    // Setze die Bildgröße
+    previewImage.style.width = `${newWidth}px`;
+    previewImage.style.height = `${newHeight}px`;
+    previewImage.style.objectPosition = 'center'; // Bild zentrieren
 
-            html2canvas(previewContainer, {
-                width: 900,
-                height: 1600,
-                x: 0,
-                y: 0,
-                scale: 1, // Verhindert Hochskalierung
-            }).then(canvas => {
-                // Zoom und Border-Radius zurücksetzen
-                container.style.zoom = originalZoom;
-                previewContainer.style.borderRadius = originalBorderRadius;
+    html2canvas(previewContainer, {
+        width: 225, // 900px / 4
+        height: 400, // 1600px / 4
+        x: 0,
+        y: 0,
+        scale: 4, // Skalierung auf Originalgröße zurücksetzen
+    }).then(canvas => {
+        // Zoom und Border-Radius zurücksetzen
+        container.style.zoom = originalZoom;
+        previewContainer.style.borderRadius = originalBorderRadius;
 
-                // Safari-spezifische Styles zurücksetzen
-                if (safariTextContainer) {
-                    safariTextContainer.style.transform = originalTransform;
-                    safariTextContainer.style.padding = originalPadding;
-                    safariTextContainer.style.height = originalHeight;
-                }
+        // @media Queries wieder hinzufügen
+        styleTag.innerHTML = originalMediaQueries;
 
-                const link = document.createElement('a');
-                link.download = 'inserat.jpg';
-                link.href = canvas.toDataURL('image/jpg');
-                link.click();
-            }).catch(function(error) {
-                console.log("Fehler beim Erstellen des Bildes:", error);
-            });
-        });
+        const link = document.createElement('a');
+        link.download = 'inserat.jpg';
+        link.href = canvas.toDataURL('image/jpg');
+        link.click();
+    }).catch(function(error) {
+        console.log("Fehler beim Erstellen des Bildes:", error);
+    });
+});
 
     </script>
 
