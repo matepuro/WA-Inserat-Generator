@@ -8,32 +8,25 @@
     <style>
 
         @media (min-width: 1400px){
-            .preview-container, #download-btn {
+            .container {
             zoom:0.36;
         }
 
         }
 
         @media (min-width: 1500px){
-            .preview-container, #download-btn  {
+            .container {
             zoom:0.5;
         }
 
         }
 
         @media (max-width: 1400px){
-            .preview-container, #download-btn  {
+            .container {
             zoom:0.36;
         }
 
-          .safari-ios .title, .safari-ios .text{
-            transform: scale(0.36);
-            transform-origin: top left;
         }
-
-
-        }
-
 
         @font-face {
             font-family: 'GT America Regular';
@@ -119,8 +112,6 @@
             gap: 20px;
         }
 
-        
-
         .title {
             font-size: 70pt;
             line-height: 75pt;
@@ -191,10 +182,6 @@
     </div>
 
     <script>
-        if (navigator.userAgent.match(/iPhone|iPad|iPod/) && navigator.userAgent.match(/Safari/)) {
-    document.documentElement.classList.add('safari-ios');
-}
-
         const previewImage = document.getElementById('preview-image');
         const previewTitle = document.getElementById('preview-title');
         const previewText = document.getElementById('preview-text');
