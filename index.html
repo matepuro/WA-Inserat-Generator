@@ -26,6 +26,14 @@
             zoom:0.36;
         }
 
+        .safari-ios .text-container {
+            transform: scale(0.36);
+            transform-origin: top left;
+        }
+
+        }
+
+
         @font-face {
             font-family: 'GT America Regular';
             src: url('GT-America-LCG-Standard-Regular.otf') format('opentype');
@@ -110,6 +118,8 @@
             gap: 20px;
         }
 
+        
+
         .title {
             font-size: 70pt;
             line-height: 75pt;
@@ -180,6 +190,10 @@
     </div>
 
     <script>
+        if (navigator.userAgent.match(/iPhone|iPad|iPod/) && navigator.userAgent.match(/Safari/)) {
+    document.documentElement.classList.add('safari-ios');
+}
+
         const previewImage = document.getElementById('preview-image');
         const previewTitle = document.getElementById('preview-title');
         const previewText = document.getElementById('preview-text');
