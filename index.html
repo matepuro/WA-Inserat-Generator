@@ -50,6 +50,12 @@
             src: url('GT-America-LCG-Standard-Medium.otf') format('opentype');
         }
 
+        html, body {
+    -webkit-text-size-adjust: none; /* Safari und WebKit-basierte Browser */
+    -ms-text-size-adjust: none;     /* Internet Explorer 10+ */
+    text-size-adjust: none;         /* Standardkonform */
+}
+
         body {
             display: flex;
             justify-content: center;
