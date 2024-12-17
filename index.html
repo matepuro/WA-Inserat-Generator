@@ -26,6 +26,13 @@
             zoom:0.36;
         }
 
+        .safari-ios .text-container{
+            transform: scale(0.36);
+            transform-origin: top left;
+            padding: 95.2px;
+            height: 952px;
+        }
+
         }
 
         @font-face {
@@ -182,6 +189,11 @@
     </div>
 
     <script>
+
+        if (navigator.userAgent.match(/iPhone|iPad|iPod/) && navigator.userAgent.match(/Safari/)) {
+            document.documentElement.classList.add('safari-ios');
+        }
+
         const previewImage = document.getElementById('preview-image');
         const previewTitle = document.getElementById('preview-title');
         const previewText = document.getElementById('preview-text');
@@ -261,6 +273,18 @@
             const originalBorderRadius = previewContainer.style.borderRadius;
             previewContainer.style.borderRadius = '0';
 
+            // Safari-spezifische Styles vorübergehend entfernen
+            const safariTextContainer = document.querySelector('.safari-ios .text-container');
+            const originalTransform = safariTextContainer ? safariTextContainer.style.transform : '';
+            const originalPadding = safariTextContainer ? safariTextContainer.style.padding : '';
+            const originalHeight = safariTextContainer ? safariTextContainer.style.height : '';
+
+            if (safariTextContainer) {
+                safariTextContainer.style.transform = '';
+                safariTextContainer.style.padding = '';
+                safariTextContainer.style.height = '';
+            }
+
             // Manuelle Berechnung für object-fit: cover
             const containerWidth = 900;
             const containerHeight = 900;
@@ -292,6 +316,13 @@
                 // Zoom und Border-Radius zurücksetzen
                 container.style.zoom = originalZoom;
                 previewContainer.style.borderRadius = originalBorderRadius;
+
+                // Safari-spezifische Styles zurücksetzen
+                if (safariTextContainer) {
+                    safariTextContainer.style.transform = originalTransform;
+                    safariTextContainer.style.padding = originalPadding;
+                    safariTextContainer.style.height = originalHeight;
+                }
 
                 const link = document.createElement('a');
                 link.download = 'inserat.jpg';
