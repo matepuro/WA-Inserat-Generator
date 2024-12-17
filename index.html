@@ -250,34 +250,57 @@
 
         // Inserat als Bild herunterladen
         downloadBtn.addEventListener('click', () => {
-    const previewContainer = document.getElementById('preview');
-    const container = document.querySelector('.container');
+            const previewContainer = document.getElementById('preview');
+            const container = document.querySelector('.container');
+            const imageContainer = document.getElementById('image-container');
+            const imageElement = document.getElementById('preview-image');
+            
+            // Temporäres Entfernen von Zoom und Border-Radius
+            const originalZoom = container.style.zoom;
+            container.style.zoom = '1'; // Zoom deaktivieren
+            const originalBorderRadius = previewContainer.style.borderRadius;
+            previewContainer.style.borderRadius = '0';
 
-    // Temporäres Entfernen von Zoom und Border-Radius
-    const originalZoom = container.style.zoom;
-    container.style.zoom = '1'; // Zoom deaktivieren
-    const originalBorderRadius = previewContainer.style.borderRadius;
-    previewContainer.style.borderRadius = '0';
+            // Manuelle Berechnung für object-fit: cover
+            const containerWidth = 900;
+            const containerHeight = 900;
+            const imageWidth = imageElement.naturalWidth;
+            const imageHeight = imageElement.naturalHeight;
 
-    html2canvas(previewContainer, {
-        width: 900,
-        height: 1600,
-        x: 0,
-        y: 0,
-        scale: 1, // Verhindert Hochskalierung
-    }).then(canvas => {
-        // Zoom und Border-Radius zurücksetzen
-        container.style.zoom = originalZoom;
-        previewContainer.style.borderRadius = originalBorderRadius;
+            let scaleX = containerWidth / imageWidth;
+            let scaleY = containerHeight / imageHeight;
 
-        const link = document.createElement('a');
-        link.download = 'inserat.jpg';
-        link.href = canvas.toDataURL('image/jpg');
-        link.click();
-    }).catch(function(error) {
-        console.log("Fehler beim Erstellen des Bildes:", error);
-    });
-});
+            // Wähle den größeren Skalierungsfaktor (damit das Bild den Container vollständig abdeckt)
+            const scale = Math.max(scaleX, scaleY);
+
+            // Berechne neue Bildgrößen
+            const newWidth = imageWidth * scale;
+            const newHeight = imageHeight * scale;
+
+            // Setze die Bildgröße
+            imageElement.style.width = `${newWidth}px`;
+            imageElement.style.height = `${newHeight}px`;
+            imageElement.style.objectPosition = 'center'; // Bild zentrieren
+
+            html2canvas(previewContainer, {
+                width: 900,
+                height: 1600,
+                x: 0,
+                y: 0,
+                scale: 1, // Verhindert Hochskalierung
+            }).then(canvas => {
+                // Zoom und Border-Radius zurücksetzen
+                container.style.zoom = originalZoom;
+                previewContainer.style.borderRadius = originalBorderRadius;
+
+                const link = document.createElement('a');
+                link.download = 'inserat.jpg';
+                link.href = canvas.toDataURL('image/jpg');
+                link.click();
+            }).catch(function(error) {
+                console.log("Fehler beim Erstellen des Bildes:", error);
+            });
+        });
 
     </script>
 
