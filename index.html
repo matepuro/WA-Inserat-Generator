@@ -156,8 +156,6 @@
             font-family: 'GT America Medium', Arial, sans-serif;
             word-wrap: break-word;
             cursor: pointer;
-            -webkit-text-size-adjust: 100%;
-           text-size-adjust: 100%;
         }
 
         .text {
@@ -169,18 +167,23 @@
             word-wrap: break-word;
             overflow: hidden;
             cursor: pointer;
-            -webkit-text-size-adjust: 100%;
-            text-size-adjust: 100%;
+            
         }
 
         .title, .text {
             outline: none;
             cursor: text;
+            -webkit-text-size-adjust: 100%;
+            text-size-adjust: 100%;
+            touch-action: manipulation; 
         }
 
         .title:focus, .text:focus {
             outline: none;
             color: #00eab0;
+            -webkit-text-size-adjust: 100%;
+            text-size-adjust: 100%;
+            touch-action: manipulation; 
         }
 
         button {
